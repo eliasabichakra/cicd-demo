@@ -4,7 +4,7 @@ const port = 3000;
 
 app.get('/api/data', (req, res) => {
     res.json({
-        message: 'Hello, this is a sample API new test token!',
+        message: 'Hello, this is a sample API!',
         success: true,
         data: {
             name: 'John Doe',
