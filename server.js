@@ -13,6 +13,17 @@ app.get('/api/data', (req, res) => {
         }
     });
 });
+app.get('/api/newdata', (req, res) => {
+    res.json({
+        message: 'Hello, this is a sample new data from new api endpoint API!',
+        success: true,
+        data: {
+            name: 'test user ',
+            age: 40,
+            profession: 'Devops Engineer'
+        }
+    });
+});
 
 if (require.main === module) {
     app.listen(port, () => {
