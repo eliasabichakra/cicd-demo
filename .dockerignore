@@ -3,7 +3,7 @@ node_modules
 
 # Ignore local environment files
 .env
-
+.gitignore
 # Ignore logs
 *.log
 
