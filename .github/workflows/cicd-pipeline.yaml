@@ -46,4 +46,4 @@ jobs:
         sed -i "s/replaceImageTag/${{ github.run_number }}/g" deployment-manifest/deployment.yaml
         git add deployment-manifest/deployment.yaml
         git commit -m "Update deployment image to version ${{ github.run_number }}"
-        git push https://${{ secrets.MY_GITHUB_TOKEN }}@github.com/eliasabichakra/cicd-demo HEAD:dev
+        git push https://${{ secrets.MY_GITHUB_TOKEN }}@github.com/eliasabichakra/cicd-demo HEAD:main
