@@ -1,0 +1,49 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v3
+
+    # Set up Node.js environment
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '22'  # Matches your local Node.js version
+
+    # Install dependencies
+    - name: Install dependencies
+      run: |
+        npm install
+
+    # Run Unit Tests
+    - name: Run Unit Tests
+      run: |
+        npm test
+
+    # Build and Push Docker Image
+    - name: Build and Push Docker Image
+      env:
+        DOCKER_IMAGE: "el1coder/backend-docker-image:${{ github.run_number }}"
+      run: |
+        docker build -t $DOCKER_IMAGE .
+        echo ${{ secrets.DOCKER_AUTH_TOKEN }} | docker login -u ${{ secrets.DOCKER_USERNAME }} --password-stdin
+        docker push $DOCKER_IMAGE
+
+    # Update Deployment File and Push to GitHub
+    - name: Update Deployment File
+      run: |
+        git config user.email "eliasabichacra89@gmail.com"
+        git config user.name "Elias Abi Chakra"
+        sed -i "s/replaceImageTag/${{ github.run_number }}/g" deployment-manifest/deployment.yaml
+        git add deployment-manifest/deployment.yaml
+        git commit -m "Update deployment image to version ${{ github.run_number }}"
+        git push https://${{ secrets.GITHUB_TOKEN }}@github.com/eliasabichakra/cicd-demo HEAD:main
