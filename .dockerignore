@@ -6,6 +6,7 @@ deployment-manifest/
 # Ignore local environment files
 .env
 .gitignore
+sonar-project.properties
 # Ignore logs
 *.log
 

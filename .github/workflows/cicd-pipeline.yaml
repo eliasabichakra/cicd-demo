@@ -12,12 +12,14 @@ jobs:
     steps:
     - name: Checkout Repository
       uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
 
     # Set up Node.js environment
     - name: Set up Node.js
       uses: actions/setup-node@v3
       with:
-        node-version: '22'  # Matches your local Node.js version
+        node-version: '22'
 
     # Install dependencies
     - name: Install dependencies
@@ -29,12 +31,19 @@ jobs:
       run: |
         npm test
     
-    # SonarQube Analysis (Using SonarQube GitHub Action)
+    # Run SonarQube Analysis
     - name: Run SonarQube Analysis
-      uses: sonarsource/sonarqube-scan-action@master
+      uses: sonarsource/sonarqube-scan-action@v2
       with:
-        sonar-token: ${{ secrets.SONAR_TOKEN }}  # Your SonarQube token
-        sonar-host-url: ${{ secrets.SONAR_HOST_URL }} 
+        sonar-token: ${{ secrets.SONARTOKEN }}
+        sonar-host-url: ${{ secrets.SONARHOSTURL }}
+
+    # Check SonarQube Quality Gate
+    - name: Check SonarQube Quality Gate
+      uses: sonarsource/sonarqube-quality-gate-action@v2
+      with:
+        timeout-minutes: 5
+        sonar-token: ${{ secrets.SONARTOKEN }}
 
     # Build and Push Docker Image
     - name: Build and Push Docker Image
