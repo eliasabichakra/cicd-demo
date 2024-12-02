@@ -35,7 +35,7 @@ jobs:
         SONAR_HOST_URL: "http://18.237.81.174:9000/"  # Replace with your SonarQube EC2 IP
         SONAR_TOKEN: ${{ secrets.SONARQUBE_TOKEN }}  # Your SonarQube token
       run: |
-        curl -sSLo sonarqube-cli.zip https://github.com/SonarSource/sonar-scanner-cli/releases/download/4.7.0.2747/sonar-scanner-cli-4.7.0.2747-linux.zip
+        curl -sSLo sonarqube-cli.zip https://github.com/SonarSource/sonar-scanner-cli/archive/refs/tags/6.2.1.4610.zip
         unzip sonar-scanner-cli.zip -d /tmp
         export PATH=$PATH:/tmp/sonar-scanner-4.7.0.2747-linux/bin
         sonar-scanner \
