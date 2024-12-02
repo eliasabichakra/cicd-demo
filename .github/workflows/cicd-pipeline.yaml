@@ -33,7 +33,7 @@ jobs:
     - name: Run SonarQube Analysis
       uses: sonarsource/sonarqube-scan-action@master
       with:
-        sonar-token: ${{ secrets.SONARQUBE_TOKEN }}  # Your SonarQube token
+        sonar-token: ${{ secrets.SONAR_TOKEN }}  # Your SonarQube token
         sonar-host-url: "http://18.237.81.174:9000/" 
 
     # Build and Push Docker Image
