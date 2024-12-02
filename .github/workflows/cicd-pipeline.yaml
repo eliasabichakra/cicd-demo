@@ -33,14 +33,14 @@ jobs:
     
     # Run SonarQube Analysis
     - name: Run SonarQube Analysis
-      uses: sonarsource/sonarqube-scan-action@v2
+      uses: sonarsource/sonarqube-scan-action@matser
       with:
         sonar-token: ${{ secrets.SONARTOKEN }}
         sonar-host-url: ${{ secrets.SONARHOSTURL }}
 
     # Check SonarQube Quality Gate
     - name: Check SonarQube Quality Gate
-      uses: sonarsource/sonarqube-quality-gate-action@v2
+      uses: sonarsource/sonarqube-quality-gate-action@master
       with:
         timeout-minutes: 5
         sonar-token: ${{ secrets.SONARTOKEN }}
