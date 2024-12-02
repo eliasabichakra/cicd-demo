@@ -33,8 +33,12 @@ jobs:
     - name: Run SonarQube Analysis
       uses: sonarsource/sonarqube-scan-action@master
       with:
-        sonar-token: ${{ secrets.SONAR_TOKEN }}  # Your SonarQube token
-        sonar-host-url: "http://18.237.81.174:9000/" 
+        entryPoint: "sonar-scanner"
+        args: >
+          -Dsonar.token=${{ secrets.SONAR_TOKEN }}
+          -Dsonar.host.url=http://18.237.81.174:9000/
+          -Dsonar.projectKey=sonar-testing
+          -Dsonar.sources=.
 
     # Build and Push Docker Image
     - name: Build and Push Docker Image
