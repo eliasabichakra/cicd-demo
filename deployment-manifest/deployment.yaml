@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: backend-app
-        image: el1coder/backend-docker-image:replaceImageTag
+        image: el1coder/backend-docker-image:35
         ports:
         - containerPort: 3000
