@@ -19,7 +19,7 @@ app.get('/api/newdata', (req, res) => {
         success: true,
         data: {
             name: 'test user ',
-            age: 40,
+            age: 41,
             profession: 'Devops Engineer'
         }
     });
