@@ -15,7 +15,7 @@ app.get('/api/data', (req, res) => {
 });
 app.get('/api/newdata', (req, res) => {
     res.json({
-        message: 'Helllo, this is a sample new data from new api endpoint API!',
+        message: 'Helllo, this is a sample news data from new api endpoint API!',
         success: true,
         data: {
             name: 'test user ',
