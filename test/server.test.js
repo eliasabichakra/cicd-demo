@@ -12,7 +12,7 @@ describe('GET /api/data', () => {
         expect(res.body).to.have.property('success', true);
         expect(res.body.data).to.include({
             name: 'John Doe',
-            age: 131,
+            age: 132,
             profession: 'Software Developer'
         });
     });

@@ -10,7 +10,7 @@ app.get('/api/data', (req, res) => {
         success: true,
         data: {
             name: 'John Doe',
-            age: 131,
+            age: 132,
             profession: 'Software Developer'
         }
     });
