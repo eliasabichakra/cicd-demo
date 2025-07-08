@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: backend-docker
+  namespace: backend-api
   labels:
     app: backend-docker
 spec:
